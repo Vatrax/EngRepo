@@ -1,0 +1,66 @@
+Skrypt uruchomiony nie, 10 kwi 2011, 16:57:21
+]0;vatrax@vatrax-laptop: /media/Data/Pogramy/Programy c++/kalkulator RPN wektorowvatrax@vatrax-laptop:/media/Data/Pogramy/Programy c++/kalkulator RPN wektorow$ maake
+g++  -Iinc -W -Wall -pedantic -c -o obj/modul.o src/modul.cpp
+
+g++ -o ./main obj/main.o obj/modul.o
+rm -f core.* core; ./main
+
+Ten program czyta znaki oraz liczby zmiennoprzecinkowe i je rozroznia.
+Operacje na stosie i operacje dodatkowe:
++  dodawanie,
+-  odejmowanie,
+*  mnozenie.
+
+&  zduplikowanie argumentu znajdujacego sie na szczycie stosu,
+#  usuniecie argumentu ze szczytu stosu,
+$  zamiana kolejnosci dwoch argumentow na szczycie stosu,
+?  wyswietlenie zawartosci calego stosu,
+p  wyswietlenie argumentu ze szczytu stosu,
+q  zakonczenie dzialania programu.
+Podaj znak dzialania lub wektor >(12 , ,2,3) ?
+(1,2,3)
+
+(1,2, ,3 -1) +
+?
+(2,4,2)
+
+(1m2  ,2,3) (1,2,3   12< , 4) - *
+?
+(16,-18,0)
+
+& & 7   & 7 & +
+?
+(32,-36,0)
+
+(16,-18,0)
+
+(16,-18,0)
+
+(16,-18,0)
+
+$
+?
+(16,-18,0)
+
+(32,-36,0)
+
+(16,-18,0)
+
+(16,-18,0)
+
+#
+?
+(32,-36,0)
+
+(16,-18,0)
+
+(16,-18,0)
+
+p
+(32,-36,0)
+q
+Dziekuje za skorzystanie z programu.
+]0;vatrax@vatrax-laptop: /media/Data/Pogramy/Programy c++/kalkulator RPN wektorowvatrax@vatrax-laptop:/media/Data/Pogramy/Programy c++/kalkulator RPN wektorow$ e xit
+exit
+
+Skrypt wykonany nie, 10 kwi 2011, 16:59:06

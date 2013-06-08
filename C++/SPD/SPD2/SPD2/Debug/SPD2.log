@@ -1,0 +1,21 @@
+﻿Kompilacja rozpoczęła się 2013-03-25 00:03:04.
+     1>Projekt „D:\PWR\Pogramy\C++\SPD\SPD2\SPD2\SPD2.vcxproj” w węźle 2 (elementy docelowe: Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\SPD2.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt SPD2.cpp
+         SPD2.cpp
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(34): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(35): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(39): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(46): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+     1>d:\pwr\pogramy\c++\spd\spd2\spd2\spd2.cpp(79): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\PWR\Pogramy\C++\SPD\SPD2\Debug\SPD2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\PWR\Pogramy\C++\SPD\SPD2\Debug\SPD2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\PWR\Pogramy\C++\SPD\SPD2\Debug\SPD2.lib" /MACHINE:X86 Debug\SPD2.obj
+         Debug\stdafx.obj
+         SPD2.vcxproj -> D:\PWR\Pogramy\C++\SPD\SPD2\Debug\SPD2.exe
+     1>Kompilowanie projektu „D:\PWR\Pogramy\C++\SPD\SPD2\SPD2\SPD2.vcxproj” wykonane (elementy docelowe: Build).
+
+Kompilacja powiodła się.
+
+Czas, który upłynął: 00:00:03.70

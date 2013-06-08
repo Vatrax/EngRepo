@@ -1,0 +1,5 @@
+| a  b  c  d |
+| b  c  d  a |
+| a  b  d  e |
+| d  d  b  e |
+( e, c, a, b)

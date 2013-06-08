@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Smart Fridge</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Smart Fridge</string>
+    <string name="login">Login</string>
+    <string name="haslo">Hasło</string>
+    <string name="stan">Stan</string>
+    <string name="history">Historia Zakupów</string>
+    <string name="logout">Wyloguj</string>
+    <string name="menu">MENU</string>
+    <string name="result">login</string>
+
+</resources>
