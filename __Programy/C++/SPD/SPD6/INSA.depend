@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1370696079 source:c:\users\vatrax\desktop\insa\main.cpp
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<sys/time.h>
+	<math.h>
+	<stdlib.h>
+	<algorithm>
+	<unistd.h>
+
