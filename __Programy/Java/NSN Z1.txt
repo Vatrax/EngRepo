@@ -1,0 +1,28 @@
+Implement an application for sending messages. Application should support different type of messages. Currently the supported types include SMS and E-mail. Application should offer simple UI with the following requirements:
+-          Input for message recipient as a string (either mobile number or e-mail address)
+
+-          Input for message text
+
+-          Selection for message type
+
+-          send button
+
+-          list of messages that have been already sent, list should contain message type, recipient and content
+
+-          After pressing send button the message is shown in the list of messages
+
+ 
+Application should be implemented in Client – Server architecture with using Java EE
+EJB should be used for remote invocations. Methods for message sending and obtaining list of sent messages should offered.
+ 
+Additional requirements:
+-          Extendable design, more message types are coming soon
+
+-          Sent messages are persisted on server side and available when application is opened again (file can be used to store messages)
+
+-          Preferred UI choice: Vaadin, if not possible then Swing.
+
+-     No need to implement actual sending, it is enough to write in to logs/system out that sms or email was sent along with recipient and message content (in addition to storing it in some db/file)
+-          JUnit tests if possible
+
+-          For Server part please use JBoss 7

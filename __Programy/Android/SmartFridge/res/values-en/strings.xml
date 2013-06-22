@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Smart Fridge</string>
+    <string name="haslo">Password</string>
+    <string name="history">Shoping history</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="menu">MENU</string>
+    <string name="result">login</string>
+    <string name="stan">State</string>
+    <string name="title">Smart Fridge</string>
+
+</resources>
