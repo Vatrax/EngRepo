@@ -20,18 +20,15 @@ import javax.ws.rs.core.Response.Status;
 
 @Path("/first")
 @SessionScoped
-// <<- ta adnotacja tylko po to aby trzymać w sesji userList, jak nie potrzeba
-// trzymać nic w sesji to nie potrzebna jest ta adnotacja
 public class HelloRest implements Serializable {
 	private static final long serialVersionUID = 7389094554784730821L;
-	private ArrayList<Sector> userList;
+	private ArrayList<Sector> sectorList;
 
 	@PostConstruct
-	// <- po utworzeniu się serwisu inicjowana jest nasza pseudo baza danych
 	public void setup() {
-		userList = new ArrayList<Sector>();
+		sectorList = new ArrayList<Sector>();
 		for (int i = 0; i < 100; i++) {
-			userList.add(new User("Sample" + i, "User" + i));
+			sectorList.add(new Sector("Sample" + i, DeviceType.ACC, i));
 		}
 	}
 
@@ -44,26 +41,26 @@ public class HelloRest implements Serializable {
 	@GET
 	@Path("/user/{id}")
 	public Response getUserById(@PathParam("id") int id) {
-		if (id < 1 || id > userList.size())
+		if (id < 1 || id >= sectorList.size())
 			return Response.status(Status.BAD_REQUEST)
-					.entity("Nie znaleziono uzytkownika o podanym id").build();
-		return Response.ok(userList.get(id - 1))
+					.entity("Nie znaleziono sektora o podanym id").build();
+		return Response.ok(sectorList.get(id - 1))
 				.type(MediaType.APPLICATION_JSON).build();
 	}
 
 	@GET
 	@Path("/users/all")
 	public Response getAllUser() {
-		return Response.ok(userList).type(MediaType.APPLICATION_JSON).build();
+		return Response.ok(sectorList).type(MediaType.APPLICATION_JSON).build();
 	}
 
 	@GET
-	@Path("/users/add/{name}/{surname}")
+	@Path("/users/add/{name}/{value}")
 	public Response addGetUser(@PathParam("name") String name,
-			@PathParam("surname") String surname) {
-		userList.add(new Sector(name, surname));
+			@PathParam("value") int value) {
+		sectorList.add(new Sector(name, DeviceType.LIGHT, value));
 		return Response.status(200)
-				.entity("addUser is called, name : " + name + " " + surname)
+				.entity("addUser is called, name : " + name + " " + value)
 				.build();
 
 	}
@@ -71,10 +68,10 @@ public class HelloRest implements Serializable {
 	@POST
 	@Path("/users/add")
 	public Response addPostUser(@FormParam("name") String name,
-			@FormParam("surname") String surname) {
-		userList.add(new User(name, surname));
+			@FormParam("value") int value) {
+		sectorList.add(new Sector(name, DeviceType.SHUTTERS, value));
 		return Response.status(200)
-				.entity("addUser is called, name : " + name + " " + surname)
+				.entity("addUser is called, name : " + name + " " + value)
 				.build();
 
 	}
