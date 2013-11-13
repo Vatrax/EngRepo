@@ -13,11 +13,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>RestSample</groupId>
-	<artifactId>pl.sample.rest</artifactId>
+	<groupId>ws</groupId>
+	<artifactId>ws</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>RestSample</name>
+	<name>ws</name>
 	<description>A starter Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the jboss-javaee6-webapp archetype</description>
 
 	<url>http://jboss.org/jbossas</url>
