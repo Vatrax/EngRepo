@@ -14,18 +14,22 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+/**
+ * @author: Wojciech Krzaczek
+ */
+
 @Path("/first")
 @SessionScoped
 // <<- ta adnotacja tylko po to aby trzymać w sesji userList, jak nie potrzeba
 // trzymać nic w sesji to nie potrzebna jest ta adnotacja
 public class HelloRest implements Serializable {
 	private static final long serialVersionUID = 7389094554784730821L;
-	private ArrayList<User> userList;
+	private ArrayList<Sector> userList;
 
 	@PostConstruct
 	// <- po utworzeniu się serwisu inicjowana jest nasza pseudo baza danych
 	public void setup() {
-		userList = new ArrayList<User>();
+		userList = new ArrayList<Sector>();
 		for (int i = 0; i < 100; i++) {
 			userList.add(new User("Sample" + i, "User" + i));
 		}
@@ -57,12 +61,13 @@ public class HelloRest implements Serializable {
 	@Path("/users/add/{name}/{surname}")
 	public Response addGetUser(@PathParam("name") String name,
 			@PathParam("surname") String surname) {
-		userList.add(new User(name, surname));
+		userList.add(new Sector(name, surname));
 		return Response.status(200)
 				.entity("addUser is called, name : " + name + " " + surname)
 				.build();
 
 	}
+
 	@POST
 	@Path("/users/add")
 	public Response addPostUser(@FormParam("name") String name,

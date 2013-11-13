@@ -7,6 +7,10 @@ import javax.ejb.Stateless;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+/**
+ * @author: Wojciech Krzaczek
+ */
+
 @Stateless
 @ApplicationPath("/rest")
 public class SampleRestResolver extends Application {
