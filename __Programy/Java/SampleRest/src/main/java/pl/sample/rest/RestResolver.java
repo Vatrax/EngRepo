@@ -13,11 +13,11 @@ import javax.ws.rs.core.Application;
 
 @Stateless
 @ApplicationPath("/rest")
-public class SampleRestResolver extends Application {
+public class RestResolver extends Application {
 	@Override
 	public Set<Class<?>> getClasses() {
 		HashSet<Class<?>> serviceClasses = new HashSet<Class<?>>();
-		serviceClasses.add(HelloRest.class);
+		serviceClasses.add(Rest.class);
 		return serviceClasses;
 	}
 }

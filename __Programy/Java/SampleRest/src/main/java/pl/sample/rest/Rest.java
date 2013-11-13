@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response.Status;
 
 @Path("/first")
 @SessionScoped
-public class HelloRest implements Serializable {
+public class Rest implements Serializable {
 	private static final long serialVersionUID = 7389094554784730821L;
 	private ArrayList<Sector> sectorList;
 
