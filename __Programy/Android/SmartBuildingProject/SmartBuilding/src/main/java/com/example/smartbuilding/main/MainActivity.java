@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.smartbuilding.model.DevicesTypes;
+import com.example.smartbuilding.model.DeviceType;
 import com.example.smartbuilding.R;
 import com.example.smartbuilding.exceptions.noButtonException;
 
@@ -51,15 +50,15 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    private DevicesTypes getType(View view) throws noButtonException {
+    private DeviceType getType(View view) throws noButtonException {
         switch(view.getId())
         {
             case R.id.shutters:
-                return DevicesTypes.SHUTTERS;
+                return DeviceType.SHUTTERS;
             case R.id.light:
-                return DevicesTypes.LIGHT;
+                return DeviceType.LIGHT;
             case R.id.acc:
-                return DevicesTypes.ACC;
+                return DeviceType.ACC;
         }
         throw new noButtonException();
     }

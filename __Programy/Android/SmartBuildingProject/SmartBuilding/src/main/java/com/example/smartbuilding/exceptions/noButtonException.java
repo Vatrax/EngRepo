@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by Vatrax on 02.11.13.
  */
-public class noButtonException extends Throwable {
+public class noButtonException extends Exception {
 
     public noButtonException(){
         Log.e("ERROR", "There is no Activity for this button");

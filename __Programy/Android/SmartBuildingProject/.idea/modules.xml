@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules />
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SmartBuilding/SmartBuilding.iml" filepath="$PROJECT_DIR$/SmartBuilding/SmartBuilding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SmartBuildingProject.iml" filepath="$PROJECT_DIR$/SmartBuildingProject.iml" />
+    </modules>
   </component>
 </project>
 
