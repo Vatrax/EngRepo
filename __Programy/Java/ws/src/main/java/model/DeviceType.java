@@ -1,4 +1,4 @@
-package pl.sample.rest;
+package model;
 
 /**
  * @author: Wojciech Krzaczek

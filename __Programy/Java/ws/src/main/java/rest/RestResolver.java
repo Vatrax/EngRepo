@@ -1,4 +1,4 @@
-package pl.sample.rest;
+package rest;
 
 import java.util.HashSet;
 import java.util.Set;

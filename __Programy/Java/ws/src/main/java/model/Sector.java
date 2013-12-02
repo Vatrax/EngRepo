@@ -1,4 +1,4 @@
-package pl.sample.rest;
+package model;
 
 import java.io.Serializable;
 
@@ -17,15 +17,15 @@ public class Sector implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	private DeviceType devicesType;
+	private DeviceType deviceType;
 	private int value;
 
 	public Sector() {
 	}
 
-	public Sector(String name, DeviceType devicesType, int value) {
+	public Sector(String name, DeviceType deviceType, int value) {
 		this.name = name;
-		this.devicesType = devicesType;
+		this.deviceType = deviceType;
 		this.value = value;
 	}
 
@@ -38,11 +38,11 @@ public class Sector implements Serializable {
 	}
 
 	public DeviceType getDevicesType() {
-		return devicesType;
+		return deviceType;
 	}
 
 	public void setDevicesType(DeviceType devicesType) {
-		this.devicesType = devicesType;
+		this.deviceType = devicesType;
 	}
 
 	public int getValue() {

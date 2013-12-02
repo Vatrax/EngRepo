@@ -1,4 +1,4 @@
-package pl.sample.rest;
+package rest;
 
 import java.io.Serializable;
 import java.net.UnknownHostException;
@@ -12,6 +12,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import model.DeviceType;
+import model.Sector;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
