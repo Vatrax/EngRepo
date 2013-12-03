@@ -37,12 +37,12 @@ public class Sector implements Serializable {
 		this.name = name;
 	}
 
-	public DeviceType getDevicesType() {
+	public DeviceType getDeviceType() {
 		return deviceType;
 	}
 
-	public void setDevicesType(DeviceType devicesType) {
-		this.deviceType = devicesType;
+	public void setDeviceType(DeviceType deviceType) {
+		this.deviceType = deviceType;
 	}
 
 	public int getValue() {

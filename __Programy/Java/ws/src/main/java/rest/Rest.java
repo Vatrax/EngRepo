@@ -53,24 +53,25 @@ public class Rest implements Serializable {
 
 	@GET
 	@Path("/sector/all")
-	public Response getAllSector() {
+	public Response getAllSectors() {
 		List<Sector> list = mongoOperation.findAll(Sector.class);
 		return Response.ok(list).type(MediaType.APPLICATION_JSON).build();
 	}
 
 	@GET
 	@Path("/sector/byDT/{DT}")
-	public Response getDeviceSector(@PathParam("DT") String DT) {
+	public Response getDeviceSectors(@PathParam("DT") String DT) {
 		Query query = new Query();
-		query.addCriteria(Criteria.where("devicesType").is(DT));
+		query.addCriteria(Criteria.where("deviceType").is(DT));
 
 		List<Sector> list = mongoOperation.find(query, Sector.class);
 		return Response.ok(list).type(MediaType.APPLICATION_JSON).build();
 	}
 
+	// test
 	@POST
 	@Path("/sector/update")
-	public Response addPostSector(@FormParam("id") String id,
+	public Response updateSector(@FormParam("id") String id,
 			@FormParam("value") int value) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("id").is(id));
@@ -87,7 +88,7 @@ public class Rest implements Serializable {
 	public Response addSector(@PathParam("name") String name,
 			@PathParam("DT") DeviceType dt, @PathParam("value") int value) {
 		mongoOperation.save(new Sector(name, dt, value));
-		return Response.ok().type(MediaType.APPLICATION_JSON).build();
+		return Response.ok().build();
 	}
 
 }
