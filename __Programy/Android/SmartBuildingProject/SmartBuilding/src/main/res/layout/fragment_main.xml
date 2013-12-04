@@ -41,10 +41,9 @@ tools:context=".MainActivity$PlaceholderFragment">
         android:layout_height="wrap_content"
         android:text="Logout"
         android:id="@+id/logout"
-        android:layout_marginBottom="55dp"
+        android:onClick="logout"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="logout"/>
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -64,4 +63,14 @@ tools:context=".MainActivity$PlaceholderFragment">
         android:layout_below="@+id/light"
         android:layout_centerHorizontal="true"
         android:onClick="loadGroupList"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View all"
+        android:id="@+id/all"
+        android:layout_above="@+id/logout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:onClick="showAll"/>
 </RelativeLayout>

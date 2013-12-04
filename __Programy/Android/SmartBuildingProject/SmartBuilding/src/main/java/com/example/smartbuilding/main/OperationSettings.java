@@ -10,18 +10,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.smartbuilding.R;
 
 public class OperationSettings extends Activity {
 
-    public static final int VISIBLE = 0;
-    public static final int INVISIBLE = 100;
 
     ToggleButton toggleButton;
     SeekBar seekBar;
-    TextView textView;
+    TextView seekBarPercentage;
+    TextView deviceType;
+    TextView sector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,18 @@ public class OperationSettings extends Activity {
 
         toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
-        textView = (TextView) findViewById(R.id.seekBarPercentage);
+        seekBarPercentage = (TextView) findViewById(R.id.seekBarPercentage);
+        deviceType = (TextView) findViewById(R.id.deviceType);
+        sector = (TextView) findViewById(R.id.sectorName);
+
         //TODO set start values
+        deviceType.setText("Device Name");
+        sector.setText("Sector Name");
 
         seekBar.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                textView.setText(i + "%");
+                seekBarPercentage.setText(i + "%");
             }
 
             @Override
@@ -56,27 +62,31 @@ public class OperationSettings extends Activity {
             }
         });
         if(seekBar.getProgress()==0) {
-            setComponentVisibility(INVISIBLE);
+            setComponentVisibility(View.INVISIBLE);
         }
     }
 
         public void disableWidgets(View view){
             if(toggleButton.isChecked()){
-                setComponentVisibility(VISIBLE);
+                setComponentVisibility(View.VISIBLE);
                 seekBar.setProgress(100);
             }
             else {
-                setComponentVisibility(INVISIBLE);
+                setComponentVisibility(View.INVISIBLE);
             }
 
         }
 
     private void setComponentVisibility(int visibility) {
-        textView.setVisibility(visibility);
+        seekBarPercentage.setVisibility(visibility);
         seekBar.setVisibility(visibility);
     }
 
-    public void startOperation(View view) {}
+    public void startOperation(View view) {
+        //TODO HTTP POST
+        Toast.makeText(this, "Operation started...", Toast.LENGTH_SHORT).show();
+        this.finish();
+    }
 
 
     @Override

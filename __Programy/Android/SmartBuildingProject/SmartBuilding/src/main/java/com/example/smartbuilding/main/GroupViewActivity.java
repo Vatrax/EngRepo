@@ -3,26 +3,43 @@ package com.example.smartbuilding.main;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.smartbuilding.R;
+import com.example.smartbuilding.model.Sector;
+import com.example.smartbuilding.utils.IPList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 
 
 public class GroupViewActivity extends Activity {
 
     public static final String KEY = "sector_ID";
+
+    TextView textView;
 
     @SuppressLint("NewApi")
     @Override
@@ -37,14 +54,18 @@ public class GroupViewActivity extends Activity {
         }
 
         final ListView list = (ListView) findViewById(R.id.GroupList);
+        textView = (TextView) findViewById(R.id.deviceType);
+        textView.setText(deviceType);
 
-        String cars[] = {deviceType, "Kuchnia", "Łazienka - Parter", "Łazienka - Piętro", "Salon", "Pokój 1", "Pokój 2", "Sypialnia"};
-        //TODO HTTP GET parametrized by deviceType
-        ArrayList<String> carL = new ArrayList<String>();
-        Collections.addAll(carL, cars);
+        HttpGetAsyncTask httpGetAsyncTask = new HttpGetAsyncTask();
+        httpGetAsyncTask.execute(deviceType);
+        ArrayList<Sector> sectors = httpGetAsyncTask.getSectors();
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.row_groupview, carL);
-        list.setAdapter(adapter);
+        String[] strings = null;
+        for(int i=0; i< sectors.size(); i++) {
+            strings[i]= sectors.get(i).getGroupName();
+        }
+        list.setAdapter(new ArrayAdapter<String>(this, R.layout.row_groupview, strings));
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -83,5 +104,54 @@ public class GroupViewActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+        class HttpGetAsyncTask extends AsyncTask<String, Void, String> {
 
-}
+            private ArrayList<Sector> sectors =null;
+            public static final String URL = IPList.PHONE+"/ws/rest/first/sector/byDT/";
+
+            @Override
+            protected String doInBackground(String... params) {
+                HttpClient httpClient = new DefaultHttpClient();
+                HttpGet httpGet = new HttpGet(URL+ params[0]);
+
+                try {
+                    System.out.println("execute HTTP");
+                    HttpResponse httpResponse = httpClient.execute(httpGet);
+                    System.out.println("httpResponse");
+                    InputStream inputStream = httpResponse.getEntity().getContent();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String bufferedStrChunk = null;
+                    while((bufferedStrChunk = bufferedReader.readLine()) != null){
+                        stringBuilder.append(bufferedStrChunk);
+                    }
+                    System.out.println("Returning value of doInBackground :" + stringBuilder.toString());
+
+                    return stringBuilder.toString();
+
+                } catch (ClientProtocolException cpe) {
+                    System.out.println("Exception generates caz of httpResponse :" + cpe);
+                    cpe.printStackTrace();
+                } catch (IOException ioe) {
+                    System.out.println("Second exception generates caz of httpResponse :" + ioe);
+                    ioe.printStackTrace();
+                }
+
+                return null;
+            }
+
+            // Argument comes for this method according to the return type of the doInBackground() and
+            //it is the third generic type of the AsyncTask
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                Gson gson = new Gson();
+                sectors = gson.fromJson(result,new TypeToken<List<Sector>>(){}.getType());
+            }
+
+            public ArrayList<Sector> getSectors() {
+                return sectors;
+            }
+        }
+
+   }

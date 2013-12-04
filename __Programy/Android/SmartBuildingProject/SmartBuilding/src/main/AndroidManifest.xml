@@ -4,11 +4,11 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -27,6 +27,15 @@
         </activity>
         <activity
             android:name="com.example.smartbuilding.main.GroupViewActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.example.smartbuilding.main.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.smartBuilding.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.smartbuilding.main.AllViewActivity"
             android:label="@string/app_name"
             android:parentActivityName="com.example.smartbuilding.main.MainActivity"
             android:screenOrientation="portrait" >

@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.smartbuilding.model.DeviceType;
 import com.example.smartbuilding.R;
 import com.example.smartbuilding.exceptions.noButtonException;
+import com.example.smartbuilding.model.DeviceType;
 
 
 /**
@@ -38,6 +38,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void logout(View view) {
         this.finish();
+    }
+
+    public void showAll(View view) {
+        Intent intent = new Intent(this, AllViewActivity.class);
+        startActivity(intent);
     }
 
     public void loadGroupList(View view) {

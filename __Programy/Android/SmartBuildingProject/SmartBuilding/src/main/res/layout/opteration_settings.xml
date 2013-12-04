@@ -24,7 +24,8 @@
         android:text="New ToggleButton"
         android:id="@+id/toggleButton"
         android:onClick="disableWidgets"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/sectorName"
         android:layout_centerHorizontal="true" />
 
     <SeekBar
@@ -44,6 +45,24 @@
         android:text="Large Text"
         android:id="@+id/seekBarPercentage"
         android:layout_below="@+id/seekBar"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/sectorName"
+        android:layout_below="@+id/deviceType"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/deviceType"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
