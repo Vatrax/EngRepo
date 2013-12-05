@@ -15,12 +15,12 @@ import com.example.smartbuilding.model.Sector;
  * Created by Wojciech Krzaczek
  */
 
-public class AllViewAdapter extends ArrayAdapter<Sector> {
+public class GroupViewAdapter extends ArrayAdapter<Sector> {
 
     private final Context context;
     private final Sector[] values;
 
-    public AllViewAdapter(Context context, Sector[] values) {
+    public GroupViewAdapter(Context context, Sector[] values) {
         super(context, R.layout.row_allview, values);
         this.context = context;
         this.values = values;
@@ -31,26 +31,11 @@ public class AllViewAdapter extends ArrayAdapter<Sector> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.row_allview, parent, false);
+        View rowView = inflater.inflate(R.layout.row_groupview, parent, false);
         TextView name = (TextView) rowView.findViewById(R.id.name);
-        TextView percentage = (TextView) rowView.findViewById(R.id.percentage);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.logo);
-        name.setText(values[position].getName() + " - " + values[position].getDeviceType().toString());
-
-        if (values[position].getValue() > 0) {
-            percentage.setText(values[position].getValue() + "%");
-            percentage.setVisibility(View.VISIBLE);
-            imageView.setImageResource(R.drawable.on);
-        }
-
+        name.setText(values[position].getName());
 
         return rowView;
     }
+
 }
-
-
-
-
-
-
-

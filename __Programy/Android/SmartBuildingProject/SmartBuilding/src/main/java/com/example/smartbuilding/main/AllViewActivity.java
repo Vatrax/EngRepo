@@ -11,17 +11,26 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smartbuilding.R;
-import com.example.smartbuilding.model.DeviceType;
 import com.example.smartbuilding.model.Sector;
 import com.example.smartbuilding.utils.AllViewAdapter;
-import com.example.smartbuilding.utils.IPList;
+import com.example.smartbuilding.utils.CustomComparator;
+import com.example.smartbuilding.utils.HttpGetAsyncTask;
+import com.example.smartbuilding.utils.SmartBuildingConstants;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
- * Created by Vatrax on 17.11.13.
+ * Created by Wojciech Krzaczek
  */
-public class AllViewActivity extends Activity{
+
+public class AllViewActivity extends Activity {
     public static final String ALL_SECTORS = "All sectors";
-    private static final String URL = IPList.PHONE + "/ws/rest/first/sector/all";
+    private static final String URL = SmartBuildingConstants.IP
+            + "/ws/rest/first/sector/all";
     TextView textView;
 
     @SuppressLint("NewApi")
@@ -38,12 +47,23 @@ public class AllViewActivity extends Activity{
         textView.setText(ALL_SECTORS);
 
         final ListView list = (ListView) findViewById(R.id.GroupList);
-        //connectWithHttpGet(URL);
-        //TODO HTTP GET parametrized by deviceType
-        Sector[] sectors = new Sector[3];
-        sectors[0]=(new Sector("sample_id", "Room", DeviceType.ACC, 0));
-        sectors[1]=(new Sector("sample_id1", "Bathroom", DeviceType.LIGHT, 50));
-        sectors[2]=(new Sector("sample_id2", "Kitchen", DeviceType.SHUTTERS, 100));
+
+        HttpGetAsyncTask httpGetAsyncTask = new HttpGetAsyncTask();
+        String response = "";
+
+        try {
+            response = httpGetAsyncTask.execute(URL).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        Gson gson = new Gson();
+        List<Sector> sectorList = gson.fromJson(response, new TypeToken<List<Sector>>() {
+        }.getType());
+        Collections.sort(sectorList, new CustomComparator());
+        Sector[] sectors = sectorList.toArray(new Sector[sectorList.size()]);
 
         list.setAdapter(new AllViewAdapter(this, sectors));
 
@@ -57,7 +77,6 @@ public class AllViewActivity extends Activity{
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -70,6 +89,5 @@ public class AllViewActivity extends Activity{
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

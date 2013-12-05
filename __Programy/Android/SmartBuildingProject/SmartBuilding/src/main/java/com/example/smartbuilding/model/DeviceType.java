@@ -1,8 +1,9 @@
 package com.example.smartbuilding.model;
 
 /**
- * @author  Wojciech Krzaczek
+ * Created by Wojciech Krzaczek
  */
+
 public enum DeviceType {
     SHUTTERS, LIGHT, ACC
 }

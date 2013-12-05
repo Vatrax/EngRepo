@@ -14,10 +14,10 @@ import com.example.smartbuilding.R;
 import com.example.smartbuilding.exceptions.noButtonException;
 import com.example.smartbuilding.model.DeviceType;
 
-
 /**
- * @author  Wojciech Krzaczek
+ * Created by Wojciech Krzaczek
  */
+
 public class MainActivity extends ActionBarActivity {
 
     public static final String DEVICE_TYPE = "Device_type";
@@ -47,8 +47,8 @@ public class MainActivity extends ActionBarActivity {
 
     public void loadGroupList(View view) {
         try {
-            Intent intent = new Intent(this, GroupViewActivity.class) ;
-            intent.putExtra(DEVICE_TYPE,getType(view).toString());
+            Intent intent = new Intent(this, GroupViewActivity.class);
+            intent.putExtra(DEVICE_TYPE, getType(view).toString());
             startActivity(intent);
         } catch (noButtonException e) {
             e.printStackTrace();
@@ -56,8 +56,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private DeviceType getType(View view) throws noButtonException {
-        switch(view.getId())
-        {
+        switch (view.getId()) {
             case R.id.shutters:
                 return DeviceType.SHUTTERS;
             case R.id.light:

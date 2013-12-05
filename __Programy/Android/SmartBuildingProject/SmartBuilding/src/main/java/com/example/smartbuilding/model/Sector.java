@@ -6,20 +6,21 @@ import java.io.Serializable;
  * Created by Wojciech Krzaczek
  */
 
-public class Sector implements Serializable{
+public class Sector implements Serializable {
 
     private String id;
-    private String groupName;
+    private String name;
     private DeviceType deviceType;
     private int value;
 
-    public Sector() {}
+    public Sector() {
+    }
 
-    public Sector(String id, String groupName, DeviceType deviceType, int value) {
-        this.id=id;
-        this.groupName=groupName;
-        this.deviceType=deviceType;
-        this.value=value;
+    public Sector(String id, String name, DeviceType deviceType, int value) {
+        this.id = id;
+        this.name = name;
+        this.deviceType = deviceType;
+        this.value = value;
 
     }
 
@@ -27,8 +28,8 @@ public class Sector implements Serializable{
         return id;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getName() {
+        return name;
     }
 
     public DeviceType getDeviceType() {
@@ -39,15 +40,15 @@ public class Sector implements Serializable{
         return value;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName=groupName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setDeviceType(DeviceType deviceType) {
-        this.deviceType=deviceType;
+        this.deviceType = deviceType;
     }
 
     public void setValue(int value) {
-        this.value=value;
+        this.value = value;
     }
 }

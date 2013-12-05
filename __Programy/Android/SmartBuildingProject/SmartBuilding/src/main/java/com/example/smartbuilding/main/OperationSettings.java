@@ -15,8 +15,11 @@ import android.widget.ToggleButton;
 
 import com.example.smartbuilding.R;
 
-public class OperationSettings extends Activity {
+/**
+ * Created by Wojciech Krzaczek
+ */
 
+public class OperationSettings extends Activity {
 
     ToggleButton toggleButton;
     SeekBar seekBar;
@@ -41,11 +44,11 @@ public class OperationSettings extends Activity {
         deviceType = (TextView) findViewById(R.id.deviceType);
         sector = (TextView) findViewById(R.id.sectorName);
 
-        //TODO set start values
+        // TODO set start values
         deviceType.setText("Device Name");
         sector.setText("Sector Name");
 
-        seekBar.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 seekBarPercentage.setText(i + "%");
@@ -61,21 +64,20 @@ public class OperationSettings extends Activity {
 
             }
         });
-        if(seekBar.getProgress()==0) {
+        if (seekBar.getProgress() == 0) {
             setComponentVisibility(View.INVISIBLE);
         }
     }
 
-        public void disableWidgets(View view){
-            if(toggleButton.isChecked()){
-                setComponentVisibility(View.VISIBLE);
-                seekBar.setProgress(100);
-            }
-            else {
-                setComponentVisibility(View.INVISIBLE);
-            }
-
+    public void disableWidgets(View view) {
+        if (toggleButton.isChecked()) {
+            setComponentVisibility(View.VISIBLE);
+            seekBar.setProgress(100);
+        } else {
+            setComponentVisibility(View.INVISIBLE);
         }
+
+    }
 
     private void setComponentVisibility(int visibility) {
         seekBarPercentage.setVisibility(visibility);
@@ -83,15 +85,14 @@ public class OperationSettings extends Activity {
     }
 
     public void startOperation(View view) {
-        //TODO HTTP POST
+        // TODO HTTP POST
         Toast.makeText(this, "Operation started...", Toast.LENGTH_SHORT).show();
         this.finish();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.operation_settings, menu);
         return true;
@@ -109,6 +110,5 @@ public class OperationSettings extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }
