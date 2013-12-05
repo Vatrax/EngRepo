@@ -6,24 +6,22 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smartbuilding.R;
 import com.example.smartbuilding.model.Sector;
-import com.example.smartbuilding.utils.AllViewAdapter;
 import com.example.smartbuilding.utils.GroupViewAdapter;
 import com.example.smartbuilding.utils.HttpGetAsyncTask;
 import com.example.smartbuilding.utils.SmartBuildingConstants;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -61,9 +59,9 @@ public class GroupViewActivity extends Activity {
         try {
             response = httpGetAsyncTask.execute(URL + deviceType).get();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Log.e("HTTP_ERROR", String.valueOf(e));
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e("HTTP_ERROR", String.valueOf(e));
         }
 
         Gson gson = new Gson();
@@ -78,13 +76,10 @@ public class GroupViewActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position); // TODO
-                // get
-                // item
-                // ID
+                final Sector item = (Sector) parent.getItemAtPosition(position);
                 Intent intent = new Intent(GroupViewActivity.this,
                         OperationSettings.class);
-                intent.putExtra(KEY, item);
+                intent.putExtra(KEY, item.getId());
                 startActivity(intent);
 
             }

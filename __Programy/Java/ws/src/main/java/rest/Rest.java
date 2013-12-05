@@ -68,7 +68,6 @@ public class Rest implements Serializable {
 		return Response.ok(list).type(MediaType.APPLICATION_JSON).build();
 	}
 
-	// test
 	@POST
 	@Path("/sector/update")
 	public Response updateSector(@FormParam("id") String id,
@@ -77,10 +76,12 @@ public class Rest implements Serializable {
 		query.addCriteria(Criteria.where("id").is(id));
 
 		Sector sector = mongoOperation.findOne(query, Sector.class);
-		sector.setValue(value);
+		System.out.println(sector.getValue());
+		sector.setValue(value); // nie ma set value?
+		System.out.println(sector.getValue());
 		mongoOperation.save(sector);
 
-		return Response.ok(sector).build();
+		return Response.ok("ok").build();
 	}
 
 	@GET
@@ -88,7 +89,7 @@ public class Rest implements Serializable {
 	public Response addSector(@PathParam("name") String name,
 			@PathParam("DT") DeviceType dt, @PathParam("value") int value) {
 		mongoOperation.save(new Sector(name, dt, value));
-		return Response.ok().build();
+		return Response.ok("ok").build();
 	}
 
 }

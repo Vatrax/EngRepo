@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -54,9 +55,9 @@ public class AllViewActivity extends Activity {
         try {
             response = httpGetAsyncTask.execute(URL).get();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Log.e("HTTP_ERROR", String.valueOf(e));
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e("HTTP_ERROR", String.valueOf(e));
         }
 
         Gson gson = new Gson();

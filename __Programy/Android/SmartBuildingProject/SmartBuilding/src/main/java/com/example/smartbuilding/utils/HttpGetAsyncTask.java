@@ -55,12 +55,4 @@ public class HttpGetAsyncTask extends AsyncTask<String, Void, String> {
         return null;
     }
 
-    // Argument comes for this method according to the return type of the
-    // doInBackground() and
-    // it is the third generic type of the AsyncTask
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-    }
-
 }
