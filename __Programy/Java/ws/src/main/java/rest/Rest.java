@@ -76,9 +76,7 @@ public class Rest implements Serializable {
 		query.addCriteria(Criteria.where("id").is(id));
 
 		Sector sector = mongoOperation.findOne(query, Sector.class);
-		System.out.println(sector.getValue());
-		sector.setValue(value); // nie ma set value?
-		System.out.println(sector.getValue());
+		sector.setValue(value);
 		mongoOperation.save(sector);
 
 		return Response.ok("ok").build();

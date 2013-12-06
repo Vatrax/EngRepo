@@ -96,6 +96,7 @@ public class OperationSettings extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 seekBarPercentage.setText(i + "%");
+                sector.setValue(i);
             }
 
             @Override
@@ -117,8 +118,10 @@ public class OperationSettings extends Activity {
         if (toggleButton.isChecked()) {
             setComponentVisibility(View.VISIBLE);
             seekBar.setProgress(100);
+            sector.setValue(100);
         } else {
             setComponentVisibility(View.INVISIBLE);
+            sector.setValue(0);
         }
 
     }
