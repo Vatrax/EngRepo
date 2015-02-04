@@ -1,0 +1,10 @@
+.carousel-inner.custom {
+	width: 50%;
+	float: left;
+}
+
+.prices {
+	font-size: 150%;
+    border-collapse: separate;
+	border-spacing: 20px 10px;
+}
