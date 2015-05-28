@@ -41,10 +41,8 @@ import java.util.concurrent.ExecutionException;
 
 public class OperationSettings extends Activity {
 
-    private static final String URL_GET = SmartBuildingConstants.IP
-            + "/ws/rest/first/sector/byid/";
-    private static final String URL_POST = SmartBuildingConstants.IP
-            + "/ws/rest/first/sector/update";
+    private static final String URL_GET = SmartBuildingConstants.IP + "/ws/rest/sector/byid/";
+    private static final String URL_POST = SmartBuildingConstants.IP + "/ws/rest/sector/update";
     private Sector sector;
 
     ToggleButton toggleButton;

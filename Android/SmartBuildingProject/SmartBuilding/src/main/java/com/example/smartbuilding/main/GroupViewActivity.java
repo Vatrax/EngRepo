@@ -32,8 +32,7 @@ import java.util.concurrent.ExecutionException;
 public class GroupViewActivity extends Activity {
 
     public static final String KEY = "sector_ID";
-    private static final String URL = SmartBuildingConstants.IP
-            + "/ws/rest/first/sector/byDT/";
+    private static final String URL = SmartBuildingConstants.IP + "/ws/rest/sector/byDT/";
 
     TextView textView;
 

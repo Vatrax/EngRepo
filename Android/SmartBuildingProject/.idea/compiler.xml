@@ -25,6 +25,8 @@
         <module name="SmartBuilding" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SmartBuilding" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
-

@@ -30,8 +30,7 @@ import java.util.concurrent.ExecutionException;
 
 public class AllViewActivity extends Activity {
     public static final String ALL_SECTORS = "All sectors";
-    private static final String URL = SmartBuildingConstants.IP
-            + "/ws/rest/first/sector/all";
+    private static final String URL = SmartBuildingConstants.IP + "/ws/rest/sector/all";
     TextView textView;
 
     @SuppressLint("NewApi")

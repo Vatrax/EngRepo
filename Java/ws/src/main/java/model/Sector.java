@@ -14,8 +14,7 @@ public class Sector implements Serializable {
 
 	private static final long serialVersionUID = 6735425914919709308L;
 
-	@Id
-	private String id;
+	@Id private String id;
 	private String name;
 	private DeviceType deviceType;
 	private int value;
@@ -27,6 +26,11 @@ public class Sector implements Serializable {
 		this.name = name;
 		this.deviceType = deviceType;
 		this.value = value;
+	}
+
+	public Sector(String id, String name, DeviceType dt, int value) {
+		this(name, dt, value);
+		this.id = id;
 	}
 
 	public String getName() {

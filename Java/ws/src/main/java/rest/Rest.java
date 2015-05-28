@@ -1,92 +1,63 @@
 package rest;
 
-import java.io.Serializable;
-import java.net.UnknownHostException;
-import java.util.List;
+import model.DeviceType;
+import model.Sector;
 
-import javax.annotation.PostConstruct;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import model.DeviceType;
-import model.Sector;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-
-import com.mongodb.MongoClient;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Wojciech Krzaczek
  */
 
-@Path("/first")
-public class Rest implements Serializable {
-	private static final long serialVersionUID = 7389094554784730821L;
-	MongoClient mongo;
-	private MongoOperations mongoOperation;
-	private ApplicationContext ctx;
+@Path("/sector") public class Rest {
 
-	@PostConstruct
-	public void setup() throws UnknownHostException {
-		ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
-		mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+	private static List<Sector> sectors = new ArrayList<Sector>();
+	private static int id = 0;
+
+	@GET @Path("/byid/{id}") public Response getSectorById(@PathParam("id") String id) {
+		Sector responseSector = null;
+		for (Sector sector : sectors) {
+			if (sector.getId().equals(id)) {
+				responseSector = sector;
+			}
+		}
+
+		return Response.ok(responseSector).type(MediaType.APPLICATION_JSON).build();
 	}
 
-	@GET
-	@Path("/sector/byid/{id}")
-	public Response getSectorById(@PathParam("id") String id) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("id").is(id));
-
-		Sector sector = mongoOperation.findOne(query, Sector.class);
-		return Response.ok(sector).type(MediaType.APPLICATION_JSON).build();
+	@GET @Path("/all") public Response getAllSectors() {
+		return Response.ok(sectors).type(MediaType.APPLICATION_JSON).build();
 	}
 
-	@GET
-	@Path("/sector/all")
-	public Response getAllSectors() {
-		List<Sector> list = mongoOperation.findAll(Sector.class);
-		return Response.ok(list).type(MediaType.APPLICATION_JSON).build();
+	@GET @Path("/byDT/{DT}") public Response getDeviceSectors(@PathParam("DT") String DT) {
+		ArrayList<Sector> sectorsResponse = new ArrayList<Sector>();
+		for (Sector sector : sectors) {
+			if (sector.getDeviceType().equals(DeviceType.valueOf(DT))) {
+				sectorsResponse.add(sector);
+			}
+		}
+		return Response.ok(sectorsResponse).type(MediaType.APPLICATION_JSON).build();
 	}
 
-	@GET
-	@Path("/sector/byDT/{DT}")
-	public Response getDeviceSectors(@PathParam("DT") String DT) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("deviceType").is(DT));
-
-		List<Sector> list = mongoOperation.find(query, Sector.class);
-		return Response.ok(list).type(MediaType.APPLICATION_JSON).build();
-	}
-
-	@POST
-	@Path("/sector/update")
-	public Response updateSector(@FormParam("id") String id,
-			@FormParam("value") int value) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("id").is(id));
-
-		Sector sector = mongoOperation.findOne(query, Sector.class);
-		sector.setValue(value);
-		mongoOperation.save(sector);
-
+	@GET @Path("/update/{id}/{value}") public Response updateSector(@PathParam("id") String id,
+			@PathParam("value") int value) {
+		for (Sector sector : sectors) {
+			if (sector.getId().equals(id)) {
+				sector.setValue(value);
+			}
+		}
 		return Response.ok("ok").build();
 	}
 
-	@GET
-	@Path("/sector/add/{name}/{DT}/{value}")
-	public Response addSector(@PathParam("name") String name,
+	@GET @Path("/add/{name}/{DT}/{value}") public Response addSector(@PathParam("name") String name,
 			@PathParam("DT") DeviceType dt, @PathParam("value") int value) {
-		mongoOperation.save(new Sector(name, dt, value));
+		sectors.add(new Sector("" +id++, name, dt, value));
 		return Response.ok("ok").build();
 	}
 
