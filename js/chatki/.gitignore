@@ -1,0 +1,41 @@
+## IDE specific
+# Eclipse
+.buildpath
+.project
+.classpath
+.settings/
+WebContent/
+build/
+.springBeans
+
+# JetBrains
+.idea/
+*.iml
+/null
+/out
+
+# NetBeans
+nbactions.xml
+nb-configuration.xml
+nbproject/
+
+## OS specific
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+## Tools
+# Maven
+target/
+target-grunt/
+/node_modules
+
+## Other
+rebel.xml
+catalina.base_IS_UNDEFINED/
+test-output
+
+## Bower components
+bower_components/
