@@ -79,6 +79,25 @@
                     <hr>
                 </div>
                 <div class="col-md-8">
+                    <div id="map" style="height: 400px"></div>
+                    <script>
+                        function initMap() {
+                            var myLatLng = {lat: 50.247159, lng: 17.391119};
+
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 14,
+                                center: myLatLng
+                            });
+
+                            var marker = new google.maps.Marker({
+                                position: myLatLng,
+                                map: map
+                            });
+                        }
+                    </script>
+                    <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjIi6Lo1ZQvfpeXFvTodAKNvF8Ji_h6nA&callback=initMap">
+                    </script>
                 </div>
                 <div class="col-md-4">
                     <p>Telefon:<br>
